@@ -84,7 +84,8 @@ function setGrid(e) {
             div.textContent="one";
             div.classList.add("grid");
             container.appendChild(div);
-            div.style.flex = `1 0 ${1/numGrid*100}%`;    
+            div.style.flex = `1 0 ${1/numGrid*100}%`; 
+            div.style.backgroundColor = backgroundColor;   
         }
     }
     
@@ -94,7 +95,7 @@ function setGrid(e) {
     grids.forEach(grid => {
         grid.addEventListener("mousemove", marked);
         grid.addEventListener("mousedown", marked);
-        // console.log("hello")
+        
     });
    
     //set updated number of grid to clear button
@@ -122,18 +123,15 @@ function marked(e) {
     }
     //if it is color mode, change color of grid to color picker
     if (markMode=="mark") {
-        console.log("Drawing...")
-        e.target.classList.add("marked");
+        //e.target.classList.add("marked");
         e.target.style.backgroundColor = colorPicker.value;
     //if it is erase mode, change color if gird back to background color
     } else if (markMode=="erase") {
-        console.log("Erasing...");
-        e.target.classList.remove("marked");
+        //e.target.classList.remove("marked");
         e.target.style.backgroundColor = backgroundColor;
     //if it is rainbow mode, change color of gird to random color
     } else if (markMode == "rainbow") {
-        console.log("Rainbowing...")
-        e.target.classList.add("marked");
+        //e.target.classList.add("marked");
         e.target.style.backgroundColor = randomColor();
     }   
 }
@@ -146,7 +144,6 @@ function randomColor() {
     let randomNumber = Math.random() * maxVal;
     randomNumber = Math.floor(randomNumber).toString(16);
     let randColor = randomNumber.padStart(6, 0);
-    console.log(`#${randColor.toUpperCase()}`);
     return `#${randColor.toUpperCase()}`;
 }
 
