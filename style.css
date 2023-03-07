@@ -1,0 +1,32 @@
+.Container {
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 10px; */
+    height: 500px;
+    width: 500px;
+    border: 1px;
+    border-style: solid;
+    box-shadow: 1px;
+}
+
+/* .Container > div {
+    background-color: aquamarine;
+    flex: 1 0 6.25%;
+    padding: 5px
+} */
+
+.grid {
+    background-color: #80ffd4;
+    /* flex: 1 0 6.25%; */
+    
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    aspect-ratio: 1 / 1 ;
+    /* padding: 5px */
+    /* gap: 10px; */
+}
+
+.marked {
+    background-color: rgb(205, 68, 9);
+}
