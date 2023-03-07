@@ -30,3 +30,8 @@
 .marked {
     background-color: rgb(205, 68, 9);
 }
+
+.selected {
+    background-color: black;
+    color: aliceblue;
+}
