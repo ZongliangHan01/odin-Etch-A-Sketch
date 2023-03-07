@@ -1,3 +1,4 @@
+const backgroundColor = '#f0eee6'
 const container = document.querySelector(".Container");
 let markMode = "mark";
 
@@ -15,15 +16,30 @@ const colorPicker = document.querySelector(".colorPicker");
 const erase = document.querySelector(".erase");
 erase.addEventListener("click", (e)=>{
     if (e.target.value == "false") {
+        console.log(markMode);
         markMode = "erase";
         e.target.textContent = "Draw";
         e.target.value = "true";
     } else {
+        console.log(markMode);
         markMode = "mark";
         e.target.textContent = "Erase";
         e.target.value = "false";
     }
     
+})
+
+const rainbow = document.querySelector(".rainbow");
+rainbow.addEventListener("click", (e)=> {
+    if (e.target.value == "false") {
+        markMode = "rainbow";
+        e.target.value = "true"
+        console.log(markMode);
+    } else if (e.target.value == "true"){
+        e.target.value = "false";
+        markMode = "mark";
+        console.log(markMode);
+    }
 })
 
 const sizeSlider = document.querySelector(".sizeSlider");
@@ -65,20 +81,35 @@ function setGrid(e) {
 
 
 function marked(e) {
-    console.log(mouseDown)
+    //console.log(mouseDown)
     if (e.type == "mousemove" && !mouseDown) {
         return;
     }
     if (markMode=="mark") {
+        console.log("Drawing...")
         e.target.classList.add("marked");
         e.target.style.backgroundColor = colorPicker.value;
-    } else if (markMode="erase") {
+    } else if (markMode=="erase") {
+        console.log("Erasing...");
         e.target.classList.remove("marked");
-        e.target.style.backgroundColor = "#80ffd4"
+        e.target.style.backgroundColor = backgroundColor;
+    } else if (markMode == "rainbow") {
+        console.log("Rainbowing...")
+        e.target.classList.add("marked");
+        e.target.style.backgroundColor = randomColor();
     }
     
     
     
+}
+
+function randomColor() {
+    let maxVal = 0xFFFFFF;
+    let randomNumber = Math.random() * maxVal;
+    randomNumber = Math.floor(randomNumber).toString(16);
+    let randColor = randomNumber.padStart(6, 0);
+    console.log(`#${randColor.toUpperCase()}`);
+    return `#${randColor.toUpperCase()}`;
 }
 
 function removeGrid() {
